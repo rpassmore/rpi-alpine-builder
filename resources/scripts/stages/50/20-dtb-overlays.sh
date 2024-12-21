@@ -1,4 +1,5 @@
 #!/bin/sh
+if ["$ARCH" == "armhf" ] || ["$ARCH" == "armv7"] || ["$ARCH" == "aarch64" ]; then
 
 # copy linux device trees and overlays to boot
 # determine dtb and overlay path
@@ -28,3 +29,4 @@ ls -C ${BOOTFS_PATH}
 colour_echo "overlays" -Cyan
 ls -C "$BOOTFS_PATH"/overlays
 colour_echo "end of overlays" -Cyan
+fi

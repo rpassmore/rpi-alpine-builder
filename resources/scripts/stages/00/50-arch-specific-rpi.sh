@@ -13,7 +13,14 @@ if [ -n "$OLDKERNEL" ]; then
       ;;
   esac
 else
-  chroot_exec apk add linux-rpi
+  case "$ARCH" in
+    armhf|armv7|aarch64)
+      chroot_exec apk add linux-rpi
+      ;;
+    x86_64|x86)
+      chroot_exec apk add linux-lts
+      ;;
+  esac  
 fi
 
 case "$RPI_FIRMWARE_BRANCH" in
